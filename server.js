@@ -6,6 +6,7 @@ import morgan from "morgan";
 import authRoutes from "./routes/authRoute.js";
 import cors from "cors";
 import path from 'path'
+import {fileURLToPath} from 'url';
 const app = express();
 
 //env
@@ -14,6 +15,9 @@ dotenv.config();
 //database
 connectDB();
 
+//esmodule fix
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 //middlewares
 app.use(cors());
 app.use(express.json());
